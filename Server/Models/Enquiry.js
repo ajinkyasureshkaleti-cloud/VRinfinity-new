@@ -10,7 +10,7 @@ const enquirySchema = new mongoose.Schema(
       default: Date.now,
     },
   },
-  { timestamps: true },
+  { timestamps: true, collection: "enquiries" },
 );
 
 export default mongoose.model("Enquiry", enquirySchema);

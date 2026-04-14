@@ -1,28 +1,33 @@
 import mongoose from "mongoose";
 
-const contentSchema = new mongoose.Schema({
-  heroTitle: String,
-  heroDesc: String,
-  overview: String,
-  connectivity: String,
+const contentSchema = new mongoose.Schema(
+  {
+    heroTitle: String,
+    heroDesc: String,
+    overview: String,
+    connectivity: String,
 
-  amenities: [
-    {
-      title: String,
-      description: String,
-    },
-  ],
+    amenities: [
+      {
+        title: String,
+        description: String,
+      },
+    ],
 
-  aboutUs: String,
+    aboutUs: String,
 
-  constructionUpdates: String,
+    constructionUpdates: String,
 
-  faq: [
-    {
-      question: String,
-      answer: String,
-    },
-  ],
-});
+    faq: [
+      {
+        question: String,
+        answer: String,
+      },
+    ],
+  },
+  {
+    collection: "contents",
+  },
+);
 
 export default mongoose.model("Content", contentSchema);

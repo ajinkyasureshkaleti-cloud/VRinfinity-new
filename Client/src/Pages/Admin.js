@@ -16,6 +16,8 @@ const AdminLogin = () => {
         password,
       });
 
+      console.log(res.data);
+
       if (res.data.success) {
         localStorage.setItem("admin", "true");
         alert("Login Successful");
