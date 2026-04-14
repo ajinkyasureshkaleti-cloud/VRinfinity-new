@@ -9,6 +9,12 @@ import enquiryRoutes from "./Routes/enquiryRoutes.js";
 
 dotenv.config();
 
+// --- Startup env diagnostics ---
+console.log("[ENV CHECK] ADMIN_EMAIL loaded    :", process.env.ADMIN_EMAIL ? `"${process.env.ADMIN_EMAIL}"` : "NOT SET");
+console.log("[ENV CHECK] ADMIN_PASSWORD loaded :", process.env.ADMIN_PASSWORD ? `"${process.env.ADMIN_PASSWORD.slice(0, 2)}${"*".repeat(Math.max(0, process.env.ADMIN_PASSWORD.length - 2))}"` : "NOT SET");
+console.log("[ENV CHECK] MONGO_URL loaded      :", process.env.MONGO_URL ? "SET (value hidden)" : "NOT SET");
+// --------------------------------
+
 const app = express();
 const PORT = process.env.PORT || 5000;
 
