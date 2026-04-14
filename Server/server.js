@@ -22,15 +22,6 @@ app.get("/", (req, res) => {
   res.send("API is live");
 });
 
-app.get("/api/debug-env", (req, res) => {
-  res.json({
-    adminEmail: process.env.ADMIN_EMAIL ? "SET" : "MISSING",
-    adminPassword: process.env.ADMIN_PASSWORD ? "SET" : "MISSING",
-    mongoUrl: process.env.MONGO_URL ? "SET" : "MISSING",
-    port: process.env.PORT,
-  });
-});
-
 app.use("/api/admin", adminRoutes);
 app.use("/api/content", contentRoutes);
 app.use("/api/enquiry", enquiryRoutes);

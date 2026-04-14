@@ -35,17 +35,7 @@ const AdminLogin = () => {
         navigate("/admin/dashboard");
       }
     } catch (err) {
-      console.log("❌ FULL ERROR:", err.response?.data || err.message);
-
-      if (err.response?.status === 401) {
-        setError("❌ Invalid credentials - Check email/password");
-      } else if (err.response) {
-        setError(err.response.data.message || "Login failed");
-      } else if (err.request) {
-        setError("🚨 Server not reachable - Check backend URL");
-      } else {
-        setError("Something went wrong");
-      }
+      console.log("FULL ERROR:", err.response?.data || err.message);
     } finally {
       setLoading(false);
     }
