@@ -24,7 +24,7 @@ const AdminDashboard = () => {
 
   const updateCMS = async () => {
     await axios.post(`${BASE_URL}/api/content/update`, content);
-    alert("CMS Updated Successfully 🚀");
+    alert("CMS Updated Successfully");
   };
 
   return (
