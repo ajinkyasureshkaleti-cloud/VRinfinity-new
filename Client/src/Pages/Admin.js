@@ -20,14 +20,19 @@ const AdminLogin = () => {
     setLoading(true);
 
     try {
-      console.log("BASE URL:", BASE_URL);
+      alert("BASE URL:", BASE_URL);
 
-      const res = await axios.post(`${BASE_URL}/api/admin/login`, form, {
-        headers: {
-          "Content-Type": "application/json",
+      const res = await axios.post(
+        `https://vrinfinity-production.up.railway.app/api/admin/login`,
+        form,
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
         },
-      });
+      );
 
+      alert("RESPONSE:", res.data);
       console.log("RESPONSE:", res.data);
 
       if (res.data.success) {
