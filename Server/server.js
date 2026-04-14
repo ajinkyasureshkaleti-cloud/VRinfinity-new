@@ -19,6 +19,10 @@ app.get("/test", (req, res) => {
   res.send("Backend Running");
 });
 
+app.get("/", (req, res) => {
+  res.send("API is live");
+});
+
 app.use("/api/admin", adminRoutes);
 app.use("/api/content", contentRoutes);
 app.use("/api/enquiry", enquiryRoutes);
@@ -28,6 +32,6 @@ mongoose
   .then(() => console.log("MongoDB Connected"))
   .catch((err) => console.log(err));
 
-app.listen(process.env.PORT || 5000, "0.0.0.0", () => {
-  console.log("Server running");
+app.listen(PORT, "0.0.0.0", () => {
+  console.log(`Server running on port ${PORT}`);
 });
