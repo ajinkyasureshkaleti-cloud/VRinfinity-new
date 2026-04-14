@@ -1,6 +1,6 @@
 import { createContext, useState, useEffect } from "react";
 import axios from "axios";
-import BASE_URL from "../congif/api";
+import BASE_URL from "../config/api";
 
 export const AppContext = createContext();
 
