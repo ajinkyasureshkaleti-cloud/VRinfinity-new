@@ -1,6 +1,5 @@
 import { useState } from "react";
 import axios from "axios";
-import BASE_URL from "../config/api";
 
 const Contactus = () => {
   const [form, setForm] = useState({
@@ -17,7 +16,7 @@ const Contactus = () => {
     e.preventDefault();
 
     try {
-      await axios.post(`${BASE_URL}/api/enquiry`, form);
+      await axios.post(`/api/enquiry`, form);
       alert("Submitted successfully!");
       setForm({ name: "", email: "", mobile: "" });
     } catch (err) {
