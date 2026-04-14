@@ -17,11 +17,12 @@ const AdminLogin = () => {
       });
 
       if (res.data.success) {
+        localStorage.setItem("admin", "true");
         alert("Login Successful");
         navigate("/admin/dashboard");
       }
     } catch (err) {
-      alert("Login Failed");
+      alert("Invalid credentials");
     }
   };
 
