@@ -1,19 +1,39 @@
+import { useState } from "react";
+import axios from "axios";
+import BASE_URL from "../congif/api";
+
 const Contactus = () => {
+  const [form, setForm] = useState({
+    name: "",
+    email: "",
+    mobile: "",
+  });
+
+  const handleChange = (e) => {
+    setForm({ ...form, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      await axios.post(`${BASE_URL}/api/enquiry`, form);
+      alert("Submitted successfully!");
+      setForm({ name: "", email: "", mobile: "" });
+    } catch (err) {
+      console.log(err);
+      alert("Error submitting form");
+    }
+  };
+
   return (
-    <section id="contactus" className="container py-2">
+    <section id="contactus" className="container py-4">
+      {/* CONTACT FORM */}
       <div className="row justify-content-center">
-        <div className="col-6 col-md-6 col-lg-6">
-          <div className="card contact-card shadow-lg border-0">
-            <div className="card-header text-white text-center">
-              <h4
-                className="section-heading mb-0"
-                style={{
-                  textAlign: "center",
-                  padding: "20px",
-                  fontFamily: "Manrope",
-                  color: "purple",
-                }}
-              >
+        <div className="col-12 col-md-6">
+          <div className="card shadow-lg border-0">
+            <div className="card-header text-center bg-white">
+              <h4 style={{ fontFamily: "Manrope", color: "purple" }}>
                 Get In Touch
               </h4>
               <small style={{ color: "purple" }}>
@@ -22,96 +42,75 @@ const Contactus = () => {
             </div>
 
             <div className="card-body p-4">
-              <form>
-                <div className="mb-3">
-                  <input
-                    type="text"
-                    className="form-control custom-input"
-                    placeholder="Enter your full name"
-                    style={{
-                      borderRadius: "25px",
-                      padding: "12px",
-                      color: "grey",
-                    }}
-                    required
-                  />
-                </div>
+              <form onSubmit={handleSubmit}>
+                <input
+                  type="text"
+                  name="name"
+                  value={form.name}
+                  onChange={handleChange}
+                  className="form-control mb-3"
+                  placeholder="Full Name"
+                  required
+                />
 
-                <div className="mb-3">
-                  <input
-                    type="email"
-                    className="form-control custom-input"
-                    placeholder="Enter your email"
-                    style={{
-                      borderRadius: "25px",
-                      padding: "12px",
-                      color: "grey",
-                    }}
-                    required
-                  />
-                </div>
+                <input
+                  type="email"
+                  name="email"
+                  value={form.email}
+                  onChange={handleChange}
+                  className="form-control mb-3"
+                  placeholder="Email"
+                  required
+                />
 
-                <div className="mb-3">
-                  <input
-                    type="tel"
-                    className="form-control custom-input"
-                    placeholder="Enter your mobile number"
-                    style={{
-                      borderRadius: "25px",
-                      padding: "12px",
-                      color: "grey",
-                    }}
-                    required
-                  />
-                </div>
+                <input
+                  type="tel"
+                  name="mobile"
+                  value={form.mobile}
+                  onChange={handleChange}
+                  className="form-control mb-3"
+                  placeholder="Mobile Number"
+                  required
+                />
 
-                <div style={{ textAlign: "center" }}>
-                  <button
-                    className="btn btn-submit btn-lg disabled"
-                    style={{
-                      borderRadius: "25px",
-                      padding: "12px",
-                      color: "white",
-                      backgroundColor: "green",
-                    }}
-                  >
-                    Submit
-                  </button>
-                </div>
+                <button
+                  type="submit"
+                  className="btn w-100"
+                  style={{
+                    background: "green",
+                    color: "white",
+                    borderRadius: "25px",
+                  }}
+                >
+                  Submit
+                </button>
               </form>
             </div>
           </div>
         </div>
       </div>
 
+      {/* FAQ SECTION */}
       <div className="row justify-content-center mt-5">
-        <div className="col-12 col-md-12 col-lg-12">
-          <h3
-            className="section-heading mb-4 text-center"
-            style={{ fontFamily: "Manrope", color: "purple" }}
-          >
+        <div className="col-12 col-md-10">
+          <h3 className="text-center mb-4" style={{ color: "purple" }}>
             Frequently Asked Questions
           </h3>
 
-          <div className="accordion" id="faqAccordion">
+          <div className="accordion">
             <div className="accordion-item">
               <h2 className="accordion-header">
                 <button
                   className="accordion-button"
-                  type="button"
                   data-bs-toggle="collapse"
-                  data-bs-target="#faq1"
+                  data-bs-target="#q1"
                 >
-                  What is the starting price of flats?
+                  What is the starting price?
                 </button>
               </h2>
-              <div
-                id="faq1"
-                className="accordion-collapse collapse show"
-                data-bs-parent="#faqAccordion"
-              >
+              <div id="q1" className="accordion-collapse collapse show">
                 <div className="accordion-body">
-                  The starting price is ₹49 Lakhs for 1 BHK apartments.
+                  ₹49 Lakhs onwards for 1 BHK.
                 </div>
               </div>
             </div>
@@ -120,20 +119,15 @@ const Contactus = () => {
               <h2 className="accordion-header">
                 <button
                   className="accordion-button collapsed"
-                  type="button"
                   data-bs-toggle="collapse"
-                  data-bs-target="#faq2"
+                  data-bs-target="#q2"
                 >
                   Is parking available?
                 </button>
               </h2>
-              <div
-                id="faq2"
-                className="accordion-collapse collapse"
-                data-bs-parent="#faqAccordion"
-              >
+              <div id="q2" className="accordion-collapse collapse">
                 <div className="accordion-body">
-                  Yes, dedicated covered parking is available for residents.
+                  Yes, dedicated parking is available.
                 </div>
               </div>
             </div>
@@ -142,20 +136,15 @@ const Contactus = () => {
               <h2 className="accordion-header">
                 <button
                   className="accordion-button collapsed"
-                  type="button"
                   data-bs-toggle="collapse"
-                  data-bs-target="#faq3"
+                  data-bs-target="#q3"
                 >
-                  Is the project ready to move?
+                  Is the project ready?
                 </button>
               </h2>
-              <div
-                id="faq3"
-                className="accordion-collapse collapse"
-                data-bs-parent="#faqAccordion"
-              >
+              <div id="q3" className="accordion-collapse collapse">
                 <div className="accordion-body">
-                  Yes, the project is ready for possession.
+                  Yes, it is ready for possession.
                 </div>
               </div>
             </div>

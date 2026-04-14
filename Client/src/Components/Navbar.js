@@ -62,6 +62,13 @@ const Navbar = () => {
         >
           ✖
         </div>
+        <div
+          className="nav-item"
+          onClick={() => (window.location.href = "/admin")}
+        >
+          {" "}
+          Admin
+        </div>
         <div className="nav-item" onClick={() => scrollTo("hero")}>
           {" "}
           Home

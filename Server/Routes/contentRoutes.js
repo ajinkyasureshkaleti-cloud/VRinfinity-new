@@ -3,13 +3,13 @@ import Content from "../Models/Content.js";
 
 const router = express.Router();
 
-// Get content
+// get customer data
 router.get("/", async (req, res) => {
   const data = await Content.findOne();
   res.json(data);
 });
 
-// Create/Update content (ADMIN)
+// update customer
 router.post("/update", async (req, res) => {
   try {
     let content = await Content.findOne();

@@ -1,17 +1,18 @@
 import { createContext, useState, useEffect } from "react";
 import axios from "axios";
+import BASE_URL from "../congif/api";
 
 export const AppContext = createContext();
 
 const AppProvider = ({ children }) => {
-
   const [data, setData] = useState({});
 
   //connect to backend
   useEffect(() => {
-    axios.get("http://localhost:5000/api/content")
-      .then(res => setData(res.data))
-      .catch(err => console.log(err));
+    axios
+      .get(`${BASE_URL}/api/content`)
+      .then((res) => setData(res.data))
+      .catch((err) => console.log(err));
   }, []);
 
   return (

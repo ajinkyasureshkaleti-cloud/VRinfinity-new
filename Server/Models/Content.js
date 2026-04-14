@@ -3,7 +3,6 @@ import mongoose from "mongoose";
 const contentSchema = new mongoose.Schema({
   heroTitle: String,
   heroDesc: String,
-
   overview: String,
   connectivity: String,
 
