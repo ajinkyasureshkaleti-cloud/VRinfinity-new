@@ -1,6 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
-// import BASE_URL from "../config/api";
+import BASE_URL from "../config/api";
 import { useNavigate } from "react-router-dom";
 
 const AdminLogin = () => {
@@ -20,18 +20,13 @@ const AdminLogin = () => {
     setLoading(true);
 
     try {
-      console.log("BASE URL:", process.env.BASE_URL);
+      console.log("BASE URL:", BASE_URL);
 
-      const res = await axios.post(
-        process.env.BASE_URL,
-        `/api/admin/login`,
-        form,
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
+      const res = await axios.post(`${BASE_URL}/api/admin/login`, form, {
+        headers: {
+          "Content-Type": "application/json",
         },
-      );
+      });
 
       console.log("RESPONSE:", res.data);
 

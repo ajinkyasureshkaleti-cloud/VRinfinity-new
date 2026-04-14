@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-// import BASE_URL from "../config/api";
+import BASE_URL from "../config/api";
 
 const AdminDashboard = () => {
   const [content, setContent] = useState({});
@@ -11,8 +11,8 @@ const AdminDashboard = () => {
   }, []);
 
   const fetchData = async () => {
-    const cmsRes = await axios.get(process.env.BASE_URL, `/api/content`);
-    const enquiryRes = await axios.get(process.env.BASE_URL, `/api/enquiry`);
+    const cmsRes = await axios.get(`${BASE_URL}/api/content`);
+    const enquiryRes = await axios.get(`${BASE_URL}/api/enquiry`);
 
     setContent(cmsRes.data || {});
     setEnquiries(enquiryRes.data || []);
@@ -23,7 +23,7 @@ const AdminDashboard = () => {
   };
 
   const updateCMS = async () => {
-    await axios.post(process.env.BASE_URL, `/api/content/update`, content);
+    await axios.post(`${BASE_URL}/api/content/update`, content);
     alert("CMS Updated Successfully");
   };
 
